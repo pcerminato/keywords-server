@@ -21,6 +21,7 @@ app.get("/status", (_, res) => {
   res.status(200).json({
     message: "OK",
     date: new Date().toISOString(),
+    uptime: process.uptime(),
   });
 });
 

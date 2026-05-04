@@ -1,5 +1,5 @@
 {
-  "name": "sentiment-keywords-server",
+  "name": "keywords-server",
   "version": "1.0.0",
   "description": "Restful service for sentiment anylisis",
   "main": "index.js",
@@ -11,21 +11,21 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint",
-    "docker:build": "docker build --target development -t sentiment-keywords-server .",
-    "docker:run": "docker run -p 8080:8080 --name sentiment-keywords-server -d sentiment-keywords-server",
+    "docker:build": "docker build --target development -t keywords-server .",
+    "docker:run": "docker run -p 8080:8080 --name keywords-server -d keywords-server",
     "docker:compose": "docker-compose up -d",
     "docker:stop": "docker stop $(docker ps -q)"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pcerminato/sentiment-keywords-server.git"
+    "url": "git+https://github.com/pcerminato/keywords-server.git"
   },
   "author": "pcerminato@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pcerminato/sentiment-keywords-server/issues"
+    "url": "https://github.com/pcerminato/keywords-server/issues"
   },
-  "homepage": "https://github.com/pcerminato/sentiment-keywords-server#readme",
+  "homepage": "https://github.com/pcerminato/keywords-server#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/cookie-parser": "^1.4.10",
