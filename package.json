@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Restful service for sentiment anylisis",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "dev": "node --env-file=.env  --import ./registry/ts-node-esm.js --watch-path=src src/server.ts",
@@ -10,9 +11,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint",
-    "docker:build": "docker build --target development -t keywords-server .",
-    "docker:run": "docker run -p 8080:8080 --name keywords-server -d keywords-server",
-    "docker:compose": "docker-compose up -d",
+    "docker:build": "docker build --target development -t keywords-server:latest .",
+    "docker:run": "docker run -p 8080:8080 --name keywords-server:latest -d keywords-server:latest",
+    "docker:compose": "docker compose up -d --build",
     "docker:stop": "docker stop $(docker ps -q)"
   },
   "repository": {
@@ -35,7 +36,6 @@
     "@types/node": "^25.5.0",
     "@types/supertest": "^7.2.0",
     "eslint": "^10.1.0",
-    "express": "^5.2.1",
     "jest": "^30.3.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.1",
@@ -50,6 +50,9 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "jsonwebtoken": "^9.0.3",
-    "mongodb": "^7.1.1"
+    "mongodb": "^7.1.1",
+    "serverless-http": "^4.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
   }
 }

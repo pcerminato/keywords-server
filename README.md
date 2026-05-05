@@ -16,3 +16,16 @@ _After_
 `node --env-file=.env --watch-path=src --loader ts-node/esm src/server.ts`
 
 > Note: this change requires adapting the repo to ESM support.
+# Serverless
+
+## Entry point
+
+Both `./index.ts` and `./server.ts` use `./app.ts`:
+- `index.ts` is the entry point for lambda function.
+- `server.ts` is the traditional way to start a server as an express app (useful for local dev).
+
+## Docker
+
+There are two stages; 
+- `development` simple setup for local development.
+- `production` instructions for building the container for AWS ECR.
