@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import config from "../config";
+import config from "../config/index.js";
 
 export function authenticationToken(
   req: Request,

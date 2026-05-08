@@ -1,6 +1,6 @@
 import request from "supertest";
-import app from "../app";
-import { insertOne } from "../db/crud";
+import app from "../app.js";
+import { insertOne } from "../db/crud/index.js";
 
 jest.mock("../db/crud/insert-one");
 

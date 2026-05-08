@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-/* import { GoogleGenAI } from "@google/genai"; */
+import { GoogleGenAI } from "@google/genai";
 
-import config from "../config";
-import { makePartitionList } from "../utils/makePartitionList";
+import config from "../config/index.js";
+import { makePartitionList } from "../utils/makePartitionList.js";
 
 export async function callAI(req: Request, res: Response, next: NextFunction) {
   try {
@@ -12,7 +12,7 @@ export async function callAI(req: Request, res: Response, next: NextFunction) {
           req.headers["content-type"],
       );
     }
-    const { GoogleGenAI } = await import("@google/genai");
+
     const client = new GoogleGenAI({ apiKey: config.GEMINI_API_KEY || "" });
 
     const prompt = `At the botton there is a json with two lists of words,

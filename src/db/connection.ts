@@ -1,5 +1,5 @@
 import { Db, MongoClient, ServerApiVersion } from "mongodb";
-import config from "../config";
+import config from "../config/index.js";
 
 const uri = config.ATLAS_URI || "";
 

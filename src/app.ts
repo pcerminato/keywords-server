@@ -2,11 +2,11 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import { authenticationToken, errorHandler } from "./middleware";
-import sentimentRouter from "./sentiment/routes";
-import loginRouter from "./auth/routes";
-import ai from "./ai/routes";
-import config from "./config";
+import { authenticationToken, errorHandler } from "./middleware/index.js";
+import sentimentRouter from "./sentiment/routes.js";
+import loginRouter from "./auth/routes.js";
+import ai from "./ai/routes.js";
+import config from "./config/index.js";
 
 const app = express();
 

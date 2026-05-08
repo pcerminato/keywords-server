@@ -1,4 +1,4 @@
-import { makePartitionList } from "./makePartitionList";
+import { makePartitionList } from "./makePartitionList.js";
 
 describe("utils", () => {
   describe("makePartitionList()", () => {

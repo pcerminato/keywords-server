@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { findLists, findOneList, insertOneList } from "./controller";
+import { findLists, findOneList, insertOneList } from "./controller.js";
 
 const router = Router();
 

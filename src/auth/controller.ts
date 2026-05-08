@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import config from "../config";
+import config from "../config/index.js";
 
 /*
  * Validates credentials agains the single hardcoded/local user for the app (no db for users)
@@ -33,8 +33,7 @@ export function login(req: Request, res: Response, next: NextFunction) {
       expires: new Date(Date.now() + ((60 * 1000) * 60) * 60 * 24), // expires in 24hs
       sameSite: "lax",
     });
-    res.status(201).json({ userName /* accessToken */
-    });
+    res.status(201).json({ userName /* accessToken */ });
   } catch (error) {
     res.status(500).json({ "message": "Error on login" });
   }
