@@ -1,5 +1,5 @@
-import { runDbConnection } from "../connection";
-import { Search, Sentiment } from "../../types";
+import { runDbConnection } from "../connection.js";
+import type { Search, Sentiment } from "../../types.js";
 import { ObjectId } from "mongodb";
 
 export async function find(search?: Search) {

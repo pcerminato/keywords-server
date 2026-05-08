@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { callAI } from "./controller";
+import { callAI } from "./controller.js";
 
 const router = Router();
 

@@ -1,5 +1,5 @@
-import { runDbConnection } from "../connection";
-import { Sentiment } from "../../types";
+import { runDbConnection } from "../connection.js";
+import type { Sentiment } from "../../types.js";
 
 export async function insertOne(sentiment: Sentiment) {
   let db;

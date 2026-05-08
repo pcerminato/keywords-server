@@ -1,2 +1,2 @@
-export { authenticationToken } from "./authenticationHandler";
-export { errorHandler } from "./errorHandler";
+export { authenticationToken } from "./authenticationHandler.js";
+export { errorHandler } from "./errorHandler.js";

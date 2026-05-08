@@ -1,4 +1,4 @@
-import { Lists } from "../types";
+import type { Lists } from "../types.js";
 
 /* Makes a map which has the original word as the key and as the value as the list of enhanced words. */
 export function makePartitionList(original: Lists, enhanced: Lists) {
