@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
-    "dev": "node --env-file=.env --watch-path=src --loader ts-node/esm src/server.ts",
+    "dev": "node --env-file=.env  --import ./registry/ts-node-esm.js --watch-path=src src/server.ts",
     "start": "node dist/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -34,7 +34,6 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.5.0",
     "@types/supertest": "^7.2.0",
-    "dotenv": "^17.3.1",
     "eslint": "^10.1.0",
     "express": "^5.2.1",
     "jest": "^30.3.0",

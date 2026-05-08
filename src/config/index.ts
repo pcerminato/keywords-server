@@ -1,15 +1,11 @@
-import dotenv from "dotenv";
-
-const config: {
-  PORT?: string;
-  ATLAS_URI?: string;
-  JWT_SECRET?: string;
-  LOGIN_USER_NAME?: string;
-  LOGIN_PASSWORD?: string;
-  UI_URL?: string;
-  GEMINI_API_KEY?: string;
-} = {};
-
-dotenv.config({ processEnv: config });
+const config = {
+  PORT: process.env.PORT || 8080,
+  ATLAS_URI: process.env.ATLAS_URI,
+  JWT_SECRET: process.env.JWT_SECRET,
+  LOGIN_USER_NAME: process.env.LOGIN_USER_NAME,
+  LOGIN_PASSWORD: process.env.LOGIN_PASSWORD,
+  UI_URL: process.env.UI_URL,
+  GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+};
 
 export default config;
