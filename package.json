@@ -11,8 +11,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint",
-    "docker:build": "docker build --target development -t keywords-server:latest .",
-    "docker:run": "docker run -p 8080:8080 --name keywords-server:latest -d keywords-server:latest",
     "docker:compose": "docker compose up -d --build",
     "docker:stop": "docker stop $(docker ps -q)"
   },
@@ -49,10 +47,9 @@
     "@google/genai": "^1.50.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
+    "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.1.1",
-    "serverless-http": "^4.0.0",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1"
+    "serverless-http": "^4.0.0"
   }
 }

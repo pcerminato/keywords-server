@@ -9,8 +9,7 @@ RUN npm run build
 
 # 2. Development Stage
 FROM base AS development
-EXPOSE 8080
-CMD ["npm", "run", "dev"] 
+CMD ["npm", "start"] 
 
 # 3. Production Stage (only production files and dependencies and copy to lambda dir)
 FROM public.ecr.aws/lambda/nodejs:22 AS production
