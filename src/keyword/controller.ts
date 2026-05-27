@@ -52,13 +52,13 @@ export const insertOneList = async (
   next: NextFunction,
 ) => {
   try {
-    const sentiment = req.body;
+    const keyword = req.body;
 
-    if (!sentiment) {
+    if (!keyword) {
       return res.status(500).json({ message: "Request body is not defined" });
     }
 
-    const result = await insertOne(sentiment);
+    const result = await insertOne(keyword);
 
     res.status(200).json(result);
   } catch (error) {

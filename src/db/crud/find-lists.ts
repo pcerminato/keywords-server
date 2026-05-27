@@ -1,5 +1,5 @@
 import { runDbConnection } from "../connection.js";
-import type { Search, Sentiment } from "../../types.js";
+import type { Keyword, Search } from "../../types.js";
 import { ObjectId } from "mongodb";
 
 export async function find(search?: Search) {
@@ -8,7 +8,7 @@ export async function find(search?: Search) {
   try {
     db = await runDbConnection();
 
-    const collection = db?.collection<Sentiment>("sentiment");
+    const collection = db?.collection<Keyword>("keyword");
 
     return await collection?.find()
       .map(({ _id, name }) => ({
@@ -34,7 +34,7 @@ export async function findOne(id: string) {
   try {
     db = await runDbConnection();
 
-    const collection = db?.collection<Sentiment>("sentiment");
+    const collection = db?.collection<Keyword>("keyword");
 
     return await collection?.findOne({ _id: new ObjectId(id) });
   } catch (error) {

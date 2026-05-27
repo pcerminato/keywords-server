@@ -1,6 +1,6 @@
 $kind: http-request
-name: Create One Sentiment List
-url: http://localhost:8080/sentiment-list
+name: Create One Keywords List
+url: http://localhost:8080/keywords-list
 method: POST
 body:
   type: json

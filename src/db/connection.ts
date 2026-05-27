@@ -15,7 +15,7 @@ export async function runDbConnection(): Promise<Db | undefined> {
   try {
     await client.connect();
 
-    const database = await client.db("sentiment_keywords");
+    const database = await client.db("keywords");
 
     await database.command({ ping: 1 });
 
