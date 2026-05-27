@@ -1,5 +1,6 @@
 /dist
 /node_modules
+/data
 .DS_Store
 .env*
 TODO.md
