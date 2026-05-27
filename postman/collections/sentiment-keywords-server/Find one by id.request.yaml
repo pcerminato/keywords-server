@@ -1,5 +1,5 @@
 $kind: http-request
 name: Find one by id
-url: http://localhost:8080/sentiment-list
+url: http://localhost:8080/keywords-list
 method: GET
 order: 4477241649858103

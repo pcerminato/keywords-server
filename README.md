@@ -1,11 +1,8 @@
-# Sentiment keywords
+# Keywords
 
-Generates advertisement blocklists based on sentiment analysis.
-
+Generates AI enhanced lists of _accepted_ or _denied_ terms based on initial values.
 
 This service generates and stores the lists.
-
-> Another system will use the lists to analyse a text (ex. a blog post) and determine the article's sentiment (🙂😐☹️).
 
 ## Replacing nodemon and dotenv with node.js native feats
 
@@ -16,6 +13,7 @@ _After_
 `node --env-file=.env --watch-path=src --loader ts-node/esm src/server.ts`
 
 > Note: this change requires adapting the repo to ESM support.
+
 # Serverless
 
 ## Entry point

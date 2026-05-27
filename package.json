@@ -1,7 +1,7 @@
 {
   "name": "keywords-server",
   "version": "1.0.0",
-  "description": "Restful service for sentiment anylisis",
+  "description": "Restful service for keywords anylisis",
   "type": "module",
   "main": "index.js",
   "scripts": {

@@ -1,4 +1,4 @@
-export interface Sentiment {
+export interface Keyword {
   name: string;
   createdAt: string;
   lastUpdateAt: string;
@@ -8,16 +8,16 @@ export interface Sentiment {
   };
 }
 
-export type Lists = Sentiment["lists"];
+export type Lists = Keyword["lists"];
 
 export type Search = {
-  name: Sentiment["name"];
+  name: Keyword["name"];
   limit?: number;
   skip?: number;
 };
 
 export type ResponseData = {
-  results: Sentiment[];
+  results: Keyword[];
   count: number;
   message?: string;
 };

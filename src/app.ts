@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import { authenticationToken, errorHandler } from "./middleware/index.js";
-import sentimentRouter from "./sentiment/routes.js";
+import keywordRouter from "./keyword/routes.js";
 import loginRouter from "./auth/routes.js";
 import ai from "./ai/routes.js";
 import config from "./config/index.js";
@@ -26,7 +26,7 @@ app.get("/status", (_, res) => {
 });
 
 app.use("/login", loginRouter);
-app.use("/sentiment-list", authenticationToken, sentimentRouter);
+app.use("/keywords-list", authenticationToken, keywordRouter);
 app.use("/ai", authenticationToken, ai);
 app.use(errorHandler);
 

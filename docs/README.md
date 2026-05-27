@@ -2,7 +2,7 @@
 # Advertisement Blocklists 
 
 ## Functional requirements
-- Upload a file (json or yaml) with sentiment words (standard format of desired and undesired)
+- Upload a file (json or yaml) with words (standard format of desired and undesired)
 - Build the table with the words from the file
     - The user can start filling the table manually, without a file.
 - There is an option to refine the words in the table using AI.
