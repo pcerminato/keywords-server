@@ -1,9 +1,24 @@
 services:
-  latest:
+  mongodb:
+    image: mongo:latest
+    container_name: keyword-mongodb
+    restart: always
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
+  api:
+    container_name: keywords-server
     build:
       context: .
       target: development
     ports:
       - "8080:8080"
     env_file:
-      - ./.env
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+  

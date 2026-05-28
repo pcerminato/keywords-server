@@ -30,11 +30,12 @@ export const findOneList = async (
 ) => {
   try {
     const { id } = req.params;
-    const results = await findOne(id as string);
+    const result = await findOne(id as string);
+    const results = result ? [result] : [];
 
-    res.status(201).json({
-      results: [results],
-      count: 1,
+    res.status(200).json({
+      results: results,
+      count: results.length,
     });
   } catch (error) {
     res.status(500).json({

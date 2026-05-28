@@ -26,6 +26,7 @@
   "homepage": "https://github.com/pcerminato/keywords-server#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@shelf/jest-mongodb": "^6.0.2",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",

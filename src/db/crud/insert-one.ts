@@ -1,16 +1,16 @@
-import { runDbConnection } from "../connection.js";
+import { DbConnection } from "../connection.js";
 import type { Keyword } from "../../types.js";
 
 export async function insertOne(keyword: Keyword) {
-  let db;
+  let { connect, disconnect } = DbConnection();
 
   try {
-    db = await runDbConnection();
+    let db = await connect();
 
-    const collection = db?.collection<Keyword>("keyword");
+    const collection = db?.collection<Keyword>("lists");
 
     const result = await collection?.insertOne(keyword);
-
+    console.log(result);
     if (result?.acknowledged) {
       return { _id: result.insertedId, ...keyword };
     }
@@ -19,6 +19,6 @@ export async function insertOne(keyword: Keyword) {
   } catch (error) {
     console.error(error);
   } finally {
-    db?.client.close();
+    disconnect();
   }
 }

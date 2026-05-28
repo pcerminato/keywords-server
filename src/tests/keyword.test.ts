@@ -1,14 +1,29 @@
 import request from "supertest";
-import app from "../app.js";
+import { type Express } from "express";
+import { createApp } from "../app.js";
+import { DbConnection } from "../db/connection.js";
 import { insertOne } from "../db/crud/index.js";
+import { authMiddlewareMockFn } from "./__mocks__/index.js";
 
 jest.mock("../db/crud/insert-one");
 
 describe("Keyword router", () => {
+  let { connect, disconnect } = DbConnection();
+  let app: Express;
+
+  beforeAll(async () => {
+    await connect();
+    app = createApp(authMiddlewareMockFn);
+  });
+  afterAll(async () => {
+    await disconnect();
+  });
+
   describe("Insert one", () => {
-    it("should return error if the requst body is not defined", async () => {
+    it("should return error if the request body is not defined", async () => {
       const res = await request(app).post("/keywords-list").send();
 
+      expect(authMiddlewareMockFn).toHaveBeenCalled();
       expect(res.status).toBe(500);
       expect(res.body.message).toBe("Request body is not defined");
     });
@@ -27,6 +42,7 @@ describe("Keyword router", () => {
 
       const res = await request(app).post("/keywords-list").send(keyword);
 
+      expect(authMiddlewareMockFn).toHaveBeenCalled();
       expect(res.status).toBe(200);
       expect(res.body).toEqual(keyword);
     });

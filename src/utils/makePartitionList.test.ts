@@ -13,25 +13,27 @@ describe("utils", () => {
       );
 
       const expected = JSON.stringify({
-        "accepted": {
-          "health": ["wellbeing", "wellness", "vitality"],
-          "nutrition": [
-            "nourishment",
-            "diet",
-            "balanced diet",
-            "eating habits",
-          ],
-          "meditation": [
-            "mindfulness",
-            "calmness",
-            "inner peace",
-            "relaxation",
-          ],
-        },
-        "denied": {
-          "diabetes": ["high blood sugar", "glucose levels", "blood glucose"],
-          "obesity": ["overweight", "excess weight", "weight gain"],
-          "stress": ["anxiety", "tension", "pressure"],
+        "lists": {
+          "accepted": {
+            "health": ["wellbeing", "wellness", "vitality"],
+            "nutrition": [
+              "nourishment",
+              "diet",
+              "balanced diet",
+              "eating habits",
+            ],
+            "meditation": [
+              "mindfulness",
+              "calmness",
+              "inner peace",
+              "relaxation",
+            ],
+          },
+          "denied": {
+            "diabetes": ["high blood sugar", "glucose levels", "blood glucose"],
+            "obesity": ["overweight", "excess weight", "weight gain"],
+            "stress": ["anxiety", "tension", "pressure"],
+          },
         },
       });
 

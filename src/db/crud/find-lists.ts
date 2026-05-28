@@ -1,14 +1,14 @@
-import { runDbConnection } from "../connection.js";
+import { DbConnection } from "../connection.js";
 import type { Keyword, Search } from "../../types.js";
 import { ObjectId } from "mongodb";
 
 export async function find(search?: Search) {
-  let db;
+  let { connect, disconnect } = DbConnection();
 
   try {
-    db = await runDbConnection();
+    let db = await connect();
 
-    const collection = db?.collection<Keyword>("keyword");
+    const collection = db?.collection<Keyword>("lists");
 
     return await collection?.find()
       .map(({ _id, name }) => ({
@@ -21,25 +21,24 @@ export async function find(search?: Search) {
   } catch (error) {
     console.error(error);
   } finally {
-    db?.client.close();
+    disconnect();
   }
 }
 
 export async function findOne(id: string) {
-  let db;
+  let { connect, disconnect } = DbConnection();
 
   if (!id) {
     new Error("Missing id param");
   }
   try {
-    db = await runDbConnection();
-
-    const collection = db?.collection<Keyword>("keyword");
+    let db = await connect();
+    const collection = db?.collection<Keyword>("lists");
 
     return await collection?.findOne({ _id: new ObjectId(id) });
   } catch (error) {
     console.error(error);
   } finally {
-    db?.client.close();
+    disconnect();
   }
 }

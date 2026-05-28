@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 
 import config from "../config/index.js";
 
+export type AuthenticationToken = typeof authenticationToken;
+
 export function authenticationToken(
   req: Request,
   res: Response,
