@@ -7,10 +7,10 @@ export async function insertOne(keyword: Keyword) {
   try {
     let db = await connect();
 
-    const collection = db?.collection<Keyword>("keyword");
+    const collection = db?.collection<Keyword>("lists");
 
     const result = await collection?.insertOne(keyword);
-
+    console.log(result);
     if (result?.acknowledged) {
       return { _id: result.insertedId, ...keyword };
     }

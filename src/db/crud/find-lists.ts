@@ -8,7 +8,7 @@ export async function find(search?: Search) {
   try {
     let db = await connect();
 
-    const collection = db?.collection<Keyword>("keyword");
+    const collection = db?.collection<Keyword>("lists");
 
     return await collection?.find()
       .map(({ _id, name }) => ({
@@ -33,7 +33,7 @@ export async function findOne(id: string) {
   }
   try {
     let db = await connect();
-    const collection = db?.collection<Keyword>("keyword");
+    const collection = db?.collection<Keyword>("lists");
 
     return await collection?.findOne({ _id: new ObjectId(id) });
   } catch (error) {
