@@ -1,10 +1,19 @@
 import request from "supertest";
 import app from "../app.js";
-import { insertOne } from "../db/crud/index.js";
 
-jest.mock("../db/crud/insert-one");
+//import { insertOne } from "../db/crud/index.js";
+import { disconnectDb, runDbConnection } from "../db/connection.js";
+
+//jest.mock("../db/crud/insert-one");
 
 describe("Keyword router", () => {
+  beforeAll(async () => {
+    await runDbConnection();
+  });
+  afterAll(async () => {
+    await disconnectDb();
+  });
+
   describe("Insert one", () => {
     it("should return error if the requst body is not defined", async () => {
       const res = await request(app).post("/keywords-list").send();
@@ -23,7 +32,7 @@ describe("Keyword router", () => {
           "denied": ["diabeted", "obecity", "stress"],
         },
       };
-      (insertOne as jest.Mock).mockResolvedValue(keyword);
+      //(insertOne as jest.Mock).mockResolvedValue(keyword);
 
       const res = await request(app).post("/keywords-list").send(keyword);
 

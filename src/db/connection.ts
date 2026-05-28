@@ -1,7 +1,8 @@
 import { Db, MongoClient, ServerApiVersion } from "mongodb";
 import config from "../config/index.js";
 
-const uri = config.MONGO_URI || "";
+// @ts-ignore
+const uri = global.__MONGO_URI__ || config.MONGO_URI || "";
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -24,5 +25,11 @@ export async function runDbConnection(): Promise<Db | undefined> {
     return database;
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function disconnectDb() {
+  if (client) {
+    await client.close();
   }
 }

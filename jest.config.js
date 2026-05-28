@@ -1,6 +1,6 @@
 export default {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  preset: '@shelf/jest-mongodb',
+  
   moduleFileExtensions: ['ts', 'js'],
   testMatch: ['**/tests/**/*.test.(ts|js)', '**/*.test.(ts|js)'],
   extensionsToTreatAsEsm: ['.ts'],
