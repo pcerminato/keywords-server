@@ -1,6 +1,6 @@
 const config = {
   PORT: process.env.PORT || 8080,
-  ATLAS_URI: process.env.ATLAS_URI,
+  MONGO_URI: process.env.MONGO_URI,
   JWT_SECRET: process.env.JWT_SECRET,
   LOGIN_USER_NAME: process.env.LOGIN_USER_NAME,
   LOGIN_PASSWORD: process.env.LOGIN_PASSWORD,

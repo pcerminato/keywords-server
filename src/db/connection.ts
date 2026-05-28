@@ -1,7 +1,7 @@
 import { Db, MongoClient, ServerApiVersion } from "mongodb";
 import config from "../config/index.js";
 
-const uri = config.ATLAS_URI || "";
+const uri = config.MONGO_URI || "";
 
 const client = new MongoClient(uri, {
   serverApi: {
