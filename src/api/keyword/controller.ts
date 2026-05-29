@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { find, findOne, insertOne } from "../db/crud/index.js";
+import { find, findOne, insertOne } from "../../db/crud/index.js";
 
 export const findLists = async (
   req: Request,

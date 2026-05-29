@@ -1,6 +1,6 @@
 import request from "supertest";
 import { type Express } from "express";
-import { createApp } from "../app.js";
+import { createApp } from "../api/app.js";
 import { DbConnection } from "../db/connection.js";
 import { insertOne } from "../db/crud/index.js";
 import { authMiddlewareMockFn } from "./__mocks__/index.js";

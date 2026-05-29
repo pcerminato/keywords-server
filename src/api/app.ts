@@ -10,7 +10,7 @@ import {
 import keywordRouter from "./keyword/routes.js";
 import loginRouter from "./auth/routes.js";
 import ai from "./ai/routes.js";
-import config from "./config/index.js";
+import config from "../config/index.js";
 
 function createApp(authenticationToken: AuthenticationToken) {
   const app = express();

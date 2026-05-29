@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { GoogleGenAI } from "@google/genai";
 
-import config from "../config/index.js";
-import { makePartitionList } from "../utils/makePartitionList.js";
+import config from "../../config/index.js";
+import { makePartitionList } from "../../utils/makePartitionList.js";
 
 export async function callAI(req: Request, res: Response, next: NextFunction) {
   try {
