@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import config from "../../config/index.js";
+import config from "../../infrastructure/config/index.js";
 
 /*
  * Validates credentials agains the single hardcoded/local user for the app (no db for users)

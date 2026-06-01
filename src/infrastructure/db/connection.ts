@@ -1,5 +1,5 @@
 import { Db, MongoClient, ServerApiVersion } from "mongodb";
-import config from "../config/index.js";
+import config from "../../infrastructure/config/index.js";
 
 export function DbConnection() {
   // @ts-ignore for global.__MONGO_URI__

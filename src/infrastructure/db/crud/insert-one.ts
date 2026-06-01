@@ -1,13 +1,13 @@
+import { KeywordsRecord } from "../../../entities/index.js";
 import { DbConnection } from "../connection.js";
-import type { Keyword } from "../../types.js";
 
-export async function insertOne(keyword: Keyword) {
+export async function insertOne(keyword: KeywordsRecord) {
   let { connect, disconnect } = DbConnection();
 
   try {
     let db = await connect();
 
-    const collection = db?.collection<Keyword>("lists");
+    const collection = db?.collection<KeywordsRecord>("lists");
 
     const result = await collection?.insertOne(keyword);
     console.log(result);

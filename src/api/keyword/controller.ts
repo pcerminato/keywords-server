@@ -1,5 +1,16 @@
 import { NextFunction, Request, Response } from "express";
-import { find, findOne, insertOne } from "../../db/crud/index.js";
+import {
+  type KeywordsRecord,
+  keywordsRecordFactory,
+} from "../../entities/index.js";
+import {
+  find,
+  findOne,
+  insertOne,
+} from "../../infrastructure/db/crud/index.js";
+import { createIsoDate } from "../../application/services/IsoDate.js";
+
+const createRecordFactory = keywordsRecordFactory(createIsoDate());
 
 export const findLists = async (
   req: Request,
@@ -53,16 +64,22 @@ export const insertOneList = async (
   next: NextFunction,
 ) => {
   try {
-    const keyword = req.body;
+    const body: KeywordsRecord = req.body;
 
-    if (!keyword) {
-      return res.status(500).json({ message: "Request body is not defined" });
-    }
+    const keyword = createRecordFactory(
+      body?.name,
+      body?.lists,
+    );
+    keyword.validate();
 
     const result = await insertOne(keyword);
-
     res.status(200).json(result);
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof RangeError || error instanceof TypeError) {
+      return res.status(422).json({
+        message: error?.message || "Unprocessable entity",
+      });
+    }
     res.status(500).json({ message: "Could not insert the record" });
     next(error);
   }

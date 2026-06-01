@@ -1,11 +1,11 @@
 import request from "supertest";
 import { type Express } from "express";
 import { createApp } from "../api/app.js";
-import { DbConnection } from "../db/connection.js";
-import { insertOne } from "../db/crud/index.js";
+import { DbConnection } from "../infrastructure/db/connection.js";
+import { insertOne } from "../infrastructure/db/crud/index.js";
 import { authMiddlewareMockFn } from "./__mocks__/index.js";
 
-jest.mock("../db/crud/insert-one");
+jest.mock("../infrastructure/db/crud/insert-one");
 
 describe("Keyword router", () => {
   let { connect, disconnect } = DbConnection();
@@ -21,11 +21,11 @@ describe("Keyword router", () => {
 
   describe("Insert one", () => {
     it("should return error if the request body is not defined", async () => {
-      const res = await request(app).post("/keywords-list").send();
+      const res = await request(app).post("/keywords-list").send({});
 
       expect(authMiddlewareMockFn).toHaveBeenCalled();
-      expect(res.status).toBe(500);
-      expect(res.body.message).toBe("Request body is not defined");
+      expect(res.status).toBe(422);
+      expect(res.body.message).toBe("A name must be set for a keywords record");
     });
 
     it("should successfully create a new list", async () => {

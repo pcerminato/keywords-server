@@ -1,7 +1,10 @@
 import request from "supertest";
-import app from "../api/app.js";
+import { createApp } from "../api/app.js";
+import { authMiddlewareMockFn } from "./__mocks__/index.js";
 
 describe("Health check", () => {
+  const app = createApp(authMiddlewareMockFn);
+
   it("should return health check status OK", async () => {
     const res = await request(app).get("/status");
 
