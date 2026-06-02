@@ -1,6 +1,7 @@
-import { DbConnection } from "../connection.js";
-import type { Keyword, Search } from "../../types.js";
 import { ObjectId } from "mongodb";
+
+import { Keyword, Search } from "../../../types.js";
+import { DbConnection } from "../connection.js";
 
 export async function find(search?: Search) {
   let { connect, disconnect } = DbConnection();
