@@ -3,14 +3,15 @@ import {
   type KeywordsRecord,
   keywordsRecordFactory,
 } from "../../entities/index.js";
-import {
-  find,
-  findOne,
-  insertOne,
-} from "../../infrastructure/db/crud/index.js";
+import { find, findOne } from "../../infrastructure/db/crud/index.js";
 import { createIsoDate } from "../../application/services/IsoDate.js";
 
+import { createSaveKeywordsRecord } from "../../use-cases/index.js";
+import { MongoDb } from "../../infrastructure/db/index.js";
+
+/* TODO these should be injected. The way the are now are global state */
 const createRecordFactory = keywordsRecordFactory(createIsoDate());
+const database = new MongoDb();
 
 export const findLists = async (
   req: Request,
@@ -65,14 +66,16 @@ export const insertOneList = async (
 ) => {
   try {
     const body: KeywordsRecord = req.body;
-
-    const keyword = createRecordFactory(
+    /* Dependencies injection */
+    const saveKeywordsRecord = createSaveKeywordsRecord(
+      database,
+      createRecordFactory,
+    );
+    const result = await saveKeywordsRecord(
       body?.name,
       body?.lists,
     );
-    keyword.validate();
 
-    const result = await insertOne(keyword);
     res.status(200).json(result);
   } catch (error: unknown) {
     if (error instanceof RangeError || error instanceof TypeError) {

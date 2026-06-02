@@ -33,12 +33,12 @@ export function keywordsRecordFactory<T>(dateFactory: IDateFactory<T>) {
       }
     }
 
-    return Object.freeze({
+    return {
       name,
       lists,
       createdAt,
       lastUpdateAt,
       validate,
-    });
+    };
   };
 }
