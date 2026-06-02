@@ -7,13 +7,15 @@ import {
   authenticationToken,
   errorHandler,
 } from "./middleware/index.js";
-import keywordRouter from "./keyword/routes.js";
+import { makeKeywordRouter } from "./keyword/routes.js";
 import loginRouter from "./auth/routes.js";
 import ai from "./ai/routes.js";
 import config from "../infrastructure/config/index.js";
+import { MongoDb } from "../infrastructure/db/index.js";
 
 function createApp(authenticationToken: AuthenticationToken) {
   const app = express();
+  const database = new MongoDb();
 
   app.use(express.json());
   app.use(cors({
@@ -31,7 +33,7 @@ function createApp(authenticationToken: AuthenticationToken) {
   });
 
   app.use("/login", loginRouter);
-  app.use("/keywords-list", authenticationToken, keywordRouter);
+  app.use("/keywords-list", authenticationToken, makeKeywordRouter(database));
   app.use("/ai", authenticationToken, ai);
   app.use(errorHandler);
 

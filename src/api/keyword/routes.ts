@@ -1,10 +1,18 @@
 import { Router } from "express";
-import { findLists, findOneList, insertOneList } from "./controller.js";
+import { makeKeywordController } from "./controller.js";
+import { DB } from "../../interfaces/index.js";
 
-const router = Router();
+export function makeKeywordRouter(database: DB) {
+  const router = Router();
+  const {
+    findLists,
+    findOneList,
+    insertOneList,
+  } = makeKeywordController(database);
 
-router.post("/", insertOneList);
-router.get("/", findLists);
-router.get("/:id", findOneList);
+  router.post("/", insertOneList);
+  router.get("/", findLists);
+  router.get("/:id", findOneList);
 
-export default router;
+  return router;
+}
